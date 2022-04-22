@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.sample.databindinglivedataskin.AppTheme"/>
+        <import type="com.sample.databindinglivedataskin.ClickHandler"/>
+        <variable
+            name="themeJava"
+            type="com.sample.databindinglivedataskin.ThemeJava" />
+        <variable
+            name="user"
+            type="com.sample.databindinglivedataskin.User" />
+        <variable
+            name="act"
+            type="com.sample.databindinglivedataskin.MainActivity" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@{AppTheme.INSTANCE.content}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@{user.name}"
+            android:textColor="@{AppTheme.INSTANCE.background}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@{themeJava.text}"
+            android:textColor="@{AppTheme.INSTANCE.background}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@{themeJava.name}"
+            android:textColor="@{themeJava.color}"
+            android:background="@{themeJava.drawable}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@{`数量：` + themeJava.count}"
+            android:textColor="@{themeJava.color}"/>
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:src="@{themeJava.drawable}"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="switch"
+            android:onClick="switchColor"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="test"
+            android:onClick="@{() -> act.test(user.name)}"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="ClickHandler"
+            android:onClick="@{() -> ClickHandler.click()}"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="fragment"
+            android:onClick="toFragment"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>
